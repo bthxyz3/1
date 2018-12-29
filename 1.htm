@@ -23,7 +23,7 @@ r = 0;
 v = document.getElementsByTagName("video")[0];
 a = window.location.href;
 v.src = a.substring(a.split("?")[0].length + 1,a.length);
-v.onload = function(){f5()};
+window.onload = function(){f5()};
 
 function f5(){
 document.addEventListener('keydown',f6);

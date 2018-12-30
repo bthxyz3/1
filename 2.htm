@@ -4,10 +4,13 @@ alert('Error:'+m+'\nURL:'+u+'\nLine:'+l);
 return true;
 };
 </script>
-<video loop muted controls style="width:auto;height:100%">
+<video loop controls style="width:auto;height:100%">
 <source src="">
 </source>
 </video>
+<br>
+<canvas width="30" height="15">
+</canvas>
 <br>
 <canvas width="400" height="12">
 </canvas>
@@ -44,6 +47,10 @@ r %= 2;
 }
 else if(e.keyCode == 40){
 v.webkitRequestFullscreen();
+if (v.volume > 0.1)
+v.volume -= 0.1;
+else
+v.volume = 1;
 }
 }
 
@@ -63,6 +70,7 @@ b = 1;
 function f2(){
 document.getElementsByTagName("div")[0].innerHTML= f3(v.currentTime);
 f7();
+f8();
 }
 
 function f3(a) {
@@ -77,6 +85,27 @@ function f3(a) {
 
 function f7(){
 canvas = document.getElementsByTagName("canvas")[0];
+ctx = canvas.getContext("2d");
+w = canvas.width;
+h = canvas.height;
+ctx.clearRect(0,0,w,h);
+ctx.beginPath();
+ctx.fillStyle="#DADADA";
+path=new Path2D();
+path.moveTo(0,h); path.lineTo(w,h);
+path.lineTo(w,0);
+ctx.fill(path);
+ctx.fillStyle="#000000";
+path=new Path2D();
+a = w * v.volume;
+path.moveTo(0,h); path.lineTo(a,h);
+path.lineTo(a,h - a * h / w);
+ctx.fill(path);
+ctx.closePath();
+}
+
+function f8(){
+canvas = document.getElementsByTagName("canvas")[1];
 ctx = canvas.getContext("2d");
 w = canvas.width;
 h = canvas.height;

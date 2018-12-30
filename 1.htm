@@ -11,11 +11,6 @@ return true;
 <script>
 v = document.getElementsByTagName("video")[0];
 a = window.location.href;
-b = a.substring(a.split("?")[0].length + 1,a.length);
-c = b.split("&");
-v.src = c[0];
-v.defaultPlaybackRate = c[1];
-v.playbackRate = c[1];
-window.onclick = function(){alert(v.playbackRate);};
+v.src = a.substring(a.split("?")[0].length + 1,a.length);
 
 </script>

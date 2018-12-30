@@ -11,6 +11,14 @@ return true;
 <script>
 v = document.getElementsByTagName("video")[0];
 a = window.location.href;
-v.src = a.substring(a.split("?")[0].length + 1,a.length);
+b = a.substring(a.split("?")[0].length + 1,a.length);
+c = b.split("&");
+v.src = c[0];
+v.addEventListener("timeupdate", function(){
+if (v.currentTime >= 8.5){
+v.currentTime = 5;
+v.play();
+}
+},false);
 
 </script>
